@@ -10,16 +10,16 @@ html,body{margin:0;min-height:100%;font-family:"Courier New",monospace;color:#2e
 body{
   min-height:100vh;
   background:
-    radial-gradient(circle at 18% 14%,#fff8df 0 10%,transparent 31%),
-    radial-gradient(circle at 82% 72%,#dfe8d4 0 8%,transparent 30%),
-    linear-gradient(145deg,#f4ead8,#fbf5e9 52%,#e7dfc9);
+    radial-gradient(circle at 18% 14%,#fff1c9 0 9%,transparent 30%),
+    radial-gradient(circle at 84% 72%,#b9d8d0 0 9%,transparent 32%),
+    linear-gradient(145deg,#f4ead8,#f8efe0 50%,#d8e2dc);
   overflow-x:hidden;
 }
 .page{min-height:100vh;position:relative;padding:28px 18px 42px;text-align:center}
 .paper{
   position:absolute;left:-5%;right:-5%;top:51%;height:38%;
-  background:#aebc8d;
-  opacity:.72;
+  background:#5c827e;
+  opacity:.62;
   transform:rotate(-1deg);
   z-index:0;
   clip-path:polygon(0 7%,4% 5%,8% 8%,13% 4%,18% 7%,24% 3%,30% 7%,36% 4%,43% 7%,50% 3%,58% 6%,64% 4%,71% 7%,77% 3%,84% 6%,91% 4%,100% 7%,100% 93%,95% 91%,90% 94%,83% 91%,76% 95%,69% 92%,62% 95%,55% 91%,48% 94%,40% 91%,33% 95%,26% 92%,19% 94%,12% 91%,5% 94%,0 91%);
@@ -28,12 +28,12 @@ h1{
   position:relative;z-index:2;
   margin:0 auto 8px;max-width:680px;
   font-family:Georgia,serif;font-weight:400;
-  font-size:clamp(29px,7vw,45px);line-height:1.05;color:#58715b;
+  font-size:clamp(29px,7vw,45px);line-height:1.05;color:#304f62;
 }
 .subtitle{
   position:relative;z-index:2;
   margin:0 0 19px;font-family:Georgia,serif;
-  color:#665f55;font-size:17px;
+  color:#62564e;font-size:17px;
 }
 .controls{
   position:relative;z-index:4;
@@ -42,9 +42,9 @@ h1{
 }
 .control{
   border:0;padding:9px 17px 10px;
-  color:#4b5040;background:#d8c58e;
+  color:#4b302b;background:#d79a72;
   font:16px "Courier New",monospace;
-  box-shadow:2px 3px 0 #82916a;
+  box-shadow:2px 3px 0 #9b5d49;
   clip-path:polygon(2% 8%,98% 0,100% 89%,3% 100%);
   cursor:pointer;
 }
@@ -52,7 +52,7 @@ h1{
 .jar-title{
   position:relative;z-index:2;
   margin:7px 0 2px;font-family:Georgia,serif;
-  font-size:27px;color:#657b61;
+  font-size:27px;color:#3e686b;
 }
 .counter{position:relative;z-index:2;font-size:16px;margin-bottom:8px}
 
@@ -72,7 +72,7 @@ h1{
 }
 .jar-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .jar-body{fill:url(#glass);stroke:#77716b;stroke-width:2.5}
-.glass-line{fill:none;stroke:#fff;stroke-opacity:.72;stroke-width:4;stroke-linecap:round}
+.glass-line{fill:none;stroke:#fff;stroke-opacity:.62;stroke-width:4;stroke-linecap:round}
 .glass-soft{fill:none;stroke:#77716b;stroke-opacity:.23;stroke-width:7}
 .lid-main{fill:#a79a89;stroke:#74695e;stroke-width:2}
 .lid-ridge{fill:none;stroke:#665d54;stroke-width:2}
@@ -107,9 +107,9 @@ h1{
 
 .add{
   position:relative;z-index:5;
-  border:0;background:#d9bd7d;color:#4b4438;
+  border:0;background:#d6a85f;color:#4b302b;
   font:16px "Courier New",monospace;
-  padding:11px 20px;box-shadow:2px 3px 0 #a18b60;
+  padding:11px 20px;box-shadow:2px 3px 0 #a06b45;
   clip-path:polygon(2% 8%,98% 0,100% 90%,3% 100%);
   cursor:pointer;
 }
@@ -234,7 +234,7 @@ textarea{
 <script>
 const KEY="nerini-demo";
 const memories=JSON.parse(localStorage.getItem(KEY)||"[]");
-const colors=["#f2cf70","#a9c98f","#e9a79c","#f5dfaa","#a7c9c2","#d9a9b8"];
+const colors=["#e7a94d","#d96b62","#8fbdb3","#f2d38b","#c9828e","#9fc8c4"];
 let selectedMemoryIndex=-1;
 
 function nerinoSVG(i){
