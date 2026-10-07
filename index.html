@@ -51,21 +51,23 @@ h1{margin:0;color:#fff1d2;text-align:center;font-weight:400;font-size:clamp(31px
 .add:hover{background:#fff0d2}
 .count{color:#f7e5c7;font-size:14px;margin-top:11px}.tip{color:#f7e5c7;font-size:13px;opacity:.82;margin-top:8px}
 
-/* COMPUTER-GRAPHICS NERINI: SVG shapes, no external images */
-.nerino{position:absolute;width:76px;height:82px;border:0;background:none;padding:0;cursor:pointer;filter:drop-shadow(0 5px 4px #170e0a55);transition:transform .22s}
-.nerino:hover{transform:translateY(-7px) rotate(-5deg) scale(1.08)}
+/* COMPUTER-GRAPHICS NERINI */
+.nerino{
+ position:absolute;width:82px;height:88px;border:0;background:none;padding:0;cursor:pointer;
+ filter:drop-shadow(0 5px 4px #170e0a55);transition:transform .24s ease,filter .24s ease;
+}
+.nerino:hover{transform:translateY(-8px) rotate(-5deg) scale(1.1);filter:drop-shadow(0 7px 8px #170e0a66)}
 .nerino svg{width:100%;height:100%;overflow:visible}
-.nerino .fur{fill:#101010}
-.nerino .eye{fill:#fff}
+.nerino .fur{fill:#111;stroke:#080808;stroke-width:1}
+.nerino .eye{fill:#fff;stroke:#090909;stroke-width:1}
 .nerino .pupil{fill:#29201c}
-.nerino .limb{fill:none;stroke:#101010;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
-.nerino .star{stroke:#b98634;stroke-width:1.5;filter:drop-shadow(0 0 5px #ffe79b)}
-.n1{left:5%;top:11%;transform:rotate(-8deg)}.n2{left:38%;top:7%;transform:rotate(6deg)}
-.n3{left:68%;top:14%;transform:rotate(-5deg)}.n4{left:20%;top:34%;transform:rotate(8deg)}
-.n5{left:52%;top:32%;transform:rotate(-7deg)}.n6{left:74%;top:43%;transform:rotate(7deg)}
-.n7{left:8%;top:55%;transform:rotate(-4deg)}.n8{left:38%;top:56%;transform:rotate(5deg)}
-.n9{left:61%;top:64%;transform:rotate(-8deg)}.n10{left:22%;top:72%;transform:rotate(7deg)}
-
+.nerino .limb{fill:none;stroke:#111;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round}
+.nerino .star{stroke:#9d7736;stroke-width:1.2;filter:drop-shadow(0 0 5px #ffe7a0)}
+.n1{left:4%;top:10%;transform:rotate(-8deg)}.n2{left:38%;top:5%;transform:rotate(5deg)}
+.n3{left:68%;top:12%;transform:rotate(-5deg)}.n4{left:17%;top:34%;transform:rotate(7deg)}
+.n5{left:49%;top:31%;transform:rotate(-6deg)}.n6{left:73%;top:43%;transform:rotate(6deg)}
+.n7{left:5%;top:54%;transform:rotate(-4deg)}.n8{left:36%;top:55%;transform:rotate(5deg)}
+.n9{left:61%;top:64%;transform:rotate(-7deg)}.n10{left:20%;top:72%;transform:rotate(6deg)}
 dialog{width:min(460px,92vw);border:0;border-radius:24px;background:#f8edd8;color:#44362f;padding:0;box-shadow:0 30px 100px #000b}
 dialog::backdrop{background:#06101dcc;backdrop-filter:blur(4px)}
 .card{padding:27px}.card h2{text-align:center;font-weight:400;margin:0 0 17px;font-size:25px}
@@ -115,18 +117,28 @@ const memories=JSON.parse(localStorage.getItem(KEY)||"[]");
 const colors=["#ffe06b","#aeea9b","#f6a6bd","#fff5dc","#a8d7f2","#ffd18b"];
 
 function nerinoSVG(i){
- const c=colors[i%colors.length], flip=i%2?"scale(-1,1) translate(-76,0)":"";
- return `<svg viewBox="0 0 76 82" aria-hidden="true">
-   <g transform="${flip}">
-    <path class="limb" d="M18 47 Q5 41 8 31 M58 47 Q70 40 68 30 M29 66 Q22 76 18 78 M48 66 Q55 76 61 78"/>
-    <circle class="fur" cx="38" cy="42" r="22"/>
-    <circle class="fur" cx="18" cy="25" r="6"/><circle class="fur" cx="59" cy="24" r="7"/>
-    <circle class="fur" cx="27" cy="19" r="5"/><circle class="fur" cx="48" cy="18" r="5"/>
-    <ellipse class="eye" cx="31" cy="39" rx="6" ry="8"/><ellipse class="eye" cx="47" cy="38" rx="6" ry="8"/>
-    <circle class="pupil" cx="33" cy="40" r="2.5"/><circle class="pupil" cx="45" cy="36" r="2.5"/>
-    <path class="limb" d="M26 50 Q38 56 51 49"/>
-    <path class="star" fill="${c}" d="M62 7 l3.4 7.2 7.9.9-5.8 5.3 1.6 7.7-7.1-4-7.1 4 1.6-7.7-5.8-5.3 7.9-.9z"/>
-   </g>
+ const c=colors[i%colors.length];
+ const poses=[
+  {body:38,eye1:[31,40],eye2:[47,38],arms:'<path class="limb" d="M23 49 Q8 40 7 29 M54 48 Q68 40 70 27"/>',legs:'<path class="limb" d="M30 64 Q22 77 17 78 M46 64 Q54 75 61 76"/>',star:[64,8]},
+  {body:39,eye1:[30,39],eye2:[48,41],arms:'<path class="limb" d="M24 48 Q11 51 5 44 M53 48 Q64 39 70 43"/>',legs:'<path class="limb" d="M31 64 Q29 77 20 79 M47 64 Q52 75 62 72"/>',star:[62,6]},
+  {body:38,eye1:[31,38],eye2:[47,38],arms:'<path class="limb" d="M23 47 Q12 33 15 25 M54 48 Q68 48 71 57"/>',legs:'<path class="limb" d="M31 65 Q20 68 15 61 M46 65 Q56 72 65 67"/>',star:[63,9]},
+  {body:40,eye1:[30,40],eye2:[48,37],arms:'<path class="limb" d="M23 50 Q8 57 8 67 M55 48 Q68 36 72 25"/>',legs:'<path class="limb" d="M31 67 Q39 76 47 77 M47 66 Q40 77 33 80"/>',star:[63,7]}
+ ][i%4];
+ const [sx,sy]=poses.star;
+ return `<svg viewBox="0 0 82 88" aria-hidden="true">
+   <path class="limb" d="M22 49 Q9 44 8 34"/>
+   ${poses.arms}
+   ${poses.legs}
+   <circle class="fur" cx="41" cy="43" r="${poses.body}"/>
+   <circle class="fur" cx="20" cy="27" r="7"/><circle class="fur" cx="61" cy="24" r="7"/>
+   <circle class="fur" cx="29" cy="18" r="6"/><circle class="fur" cx="51" cy="17" r="6"/>
+   <circle class="fur" cx="15" cy="41" r="5"/><circle class="fur" cx="67" cy="42" r="5"/>
+   <ellipse class="eye" cx="${poses.eye1[0]}" cy="${poses.eye1[1]}" rx="6.5" ry="8.5"/>
+   <ellipse class="eye" cx="${poses.eye2[0]}" cy="${poses.eye2[1]}" rx="6.5" ry="8.5"/>
+   <circle class="pupil" cx="${poses.eye1[0]+1}" cy="${poses.eye1[1]}" r="2.5"/>
+   <circle class="pupil" cx="${poses.eye2[0]-1}" cy="${poses.eye2[1]-1}" r="2.5"/>
+   <path class="limb" d="M31 52 Q40 57 50 51"/>
+   <path class="star" fill="${c}" d="M${sx} ${sy} l3.8 7.4 8.2 1-6 5.6 1.6 8-7.6-4.1-7.5 4.1 1.6-8-6-5.6 8.2-1z"/>
  </svg>`;
 }
 function render(){
