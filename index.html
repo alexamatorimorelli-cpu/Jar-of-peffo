@@ -338,8 +338,10 @@ const memories=JSON.parse(localStorage.getItem(KEY)||"[]");
 const colors=["#e7a94d","#d96b62","#8fbdb3","#f2d38b","#c9828e","#9fc8c4"];
 let selectedMemoryIndex=-1;
 
-function nerinoSVG(i){
-  const c=colors[i%colors.length];
+function nerinoSVG(i, memoryText=""){
+  let hash=0;
+  for(let k=0;k<memoryText.length;k++) hash=((hash<<5)-hash+memoryText.charCodeAt(k))|0;
+  const c=colors[Math.abs(hash)%colors.length];
   const q=[
    {fur:"M38 18C31 16 26 21 27 27C20 29 20 36 25 40C20 46 26 53 32 52C36 59 45 57 48 52C56 54 60 47 56 42C62 36 57 29 52 29C51 22 45 18 38 18Z",e1:[32,35],e2:[44,34],star:"M54 17"},
    {fur:"M39 18C32 20 29 24 29 29C22 29 21 36 26 40C22 46 27 52 33 51C35 58 44 59 48 53C55 55 60 49 56 44C62 39 57 32 53 31C53 24 46 18 39 18Z",e1:[32,36],e2:[45,38],star:"M55 18"},
@@ -378,7 +380,7 @@ function render(){
     b.style.setProperty("--rot",pos[2]+"deg");
     b.style.setProperty("--delay",(i*0.37%3.5).toFixed(2)+"s");
     b.title="Apri ricordo";
-    b.innerHTML=nerinoSVG(i);
+    b.innerHTML=nerinoSVG(i,m);
     b.onclick=()=>{
       selectedMemoryIndex=i;
       document.getElementById("memoryText").textContent=m;
