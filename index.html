@@ -95,6 +95,28 @@ h1{
 }
 .counter{position:relative;z-index:2;font-size:16px;margin-bottom:8px;color:#efd18a}
 
+/* soft soot around the jar */
+.soot{
+  position:absolute;z-index:1;border-radius:50%;
+  background:#171514;opacity:.38;filter:blur(1px);
+  box-shadow:0 0 5px #17151444;
+  pointer-events:none;
+}
+.soot-a{width:8px;height:8px;left:22%;bottom:77px;box-shadow:18px 9px 0 1px #17151455,34px 1px 0 -1px #17151444,48px 13px 0 2px #17151433}
+.soot-b{width:5px;height:5px;right:20%;bottom:94px;box-shadow:-14px 8px 0 1px #17151444,-28px 18px 0 -1px #17151455}
+.soot-c{width:11px;height:7px;left:31%;bottom:59px;opacity:.25;transform:rotate(-12deg);box-shadow:30px 4px 0 -2px #17151455,-18px 9px 0 -3px #17151444}
+.soot:after{
+  content:"";position:absolute;width:4px;height:4px;border-radius:50%;
+  background:#171514;left:50%;top:-11px;box-shadow:11px -7px 0 -1px #17151488;
+}
+@keyframes sootFloat{
+  0%,100%{transform:translateY(0) rotate(-3deg)}
+  50%{transform:translateY(-3px) rotate(2deg)}
+}
+.soot-a{animation:sootFloat 5s ease-in-out infinite}
+.soot-b{animation:sootFloat 6s ease-in-out .8s infinite}
+.soot-c{animation:sootFloat 5.5s ease-in-out 1.4s infinite}
+
 /* illustrated jar */
 .jar-wrap{
   position:relative;z-index:2;
@@ -201,6 +223,7 @@ textarea{
   <div class="counter" id="counter">nessun ricordo ancora.</div>
 
   <section class="jar-wrap">
+    <div class="soot soot-a"></div><div class="soot soot-b"></div><div class="soot soot-c"></div>
     <div class="jar-shadow"></div>
     <div class="jar">
       <svg class="jar-svg" viewBox="0 0 320 500" aria-hidden="true">
