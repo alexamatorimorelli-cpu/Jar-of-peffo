@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le cose che non volevo dimenticare</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; overflow-x:hidden;
+    color:#403b45;
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+      radial-gradient(circle at 50% 18%,rgba(255,240,205,.8),transparent 28%),
+      linear-gradient(#18253b 0 43%,#9b806b 43%,#cdb79c 100%);
+  }
+  .sky{position:fixed;inset:0 0 57%;pointer-events:none;overflow:hidden}
+  .star{position:absolute;width:3px;height:3px;background:#fff4cf;border-radius:50%;opacity:.8}
+  .star:nth-child(1){left:12%;top:20%}.star:nth-child(2){left:27%;top:12%}
+  .star:nth-child(3){left:74%;top:18%}.star:nth-child(4){left:88%;top:31%}
+  .star:nth-child(5){left:58%;top:9%}.star:nth-child(6){left:43%;top:27%}
+  .moon{position:absolute;right:13%;top:8%;width:65px;height:65px;border-radius:50%;
+    background:#fff0c9;box-shadow:0 0 35px #ffe8ad}
+  .scene{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:48px 18px 40px;position:relative}
+  h1{margin:4px 0 8px;text-align:center;font-size:clamp(29px,7vw,52px);font-weight:400;color:#fff4d9;text-shadow:0 2px 10px #172137}
+  .subtitle{color:#f6e9d0;text-align:center;font-size:17px;margin:0 0 22px}
+  .jar-wrap{position:relative;width:min(370px,88vw);margin:5px auto 18px}
+  .jar{
+    position:relative;min-height:455px;padding:82px 35px 45px;
+    border:5px solid rgba(255,255,255,.66);border-top-width:10px;
+    border-radius:35px 35px 50px 50px;
+    background:linear-gradient(100deg,rgba(255,255,255,.22),rgba(255,255,255,.07),rgba(255,255,255,.27));
+    box-shadow:inset 12px 0 22px rgba(255,255,255,.22),inset -12px 0 22px rgba(0,0,0,.08),0 20px 45px rgba(35,28,25,.3);
+    backdrop-filter:blur(1px);
+  }
+  .lid{position:absolute;top:-30px;left:9%;width:82%;height:34px;border-radius:14px 14px 8px 8px;background:repeating-linear-gradient(90deg,#927f6d 0 4px,#b2a18f 4px 7px);box-shadow:0 4px 8px #46382f}
+  .memories{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px 27px;min-height:320px}
+  .sprite{
+    border:0;background:transparent;cursor:pointer;width:55px;height:58px;position:relative;
+    filter:drop-shadow(0 4px 5px rgba(0,0,0,.25));transition:.2s transform
+  }
+  .sprite:hover{transform:translateY(-7px) scale(1.08)}
+  .body{position:absolute;left:8px;top:12px;width:39px;height:38px;background:#171717;border-radius:45% 48% 43% 48%;box-shadow:inset 7px -4px 0 #252525}
+  .body:before,.body:after{content:"";position:absolute;background:#171717;border-radius:50%}
+  .body:before{width:17px;height:22px;left:-5px;top:-9px;transform:rotate(-24deg)}
+  .body:after{width:17px;height:22px;right:-5px;top:-9px;transform:rotate(24deg)}
+  .eye{position:absolute;top:25px;width:7px;height:8px;background:#fff;border-radius:50%;z-index:2}
+  .eye.l{left:18px}.eye.r{right:18px}
+  .spark{position:absolute;right:-2px;top:0;color:#ffd86e;font-size:20px;text-shadow:0 0 7px #ffeeb2;transform:rotate(12deg)}
+  .empty{color:#f8ecd6;text-align:center;font-size:18px;line-height:1.5;opacity:.9}
+  .count{color:#f6e9d0;margin:2px 0 14px;font-size:16px}
+  button.main{
+    border:0;border-radius:999px;padding:13px 23px;font:inherit;font-size:17px;cursor:pointer;
+    color:#4a3c32;background:#f7e8c7;box-shadow:0 5px 18px rgba(40,25,20,.25)
+  }
+  button.main:hover{transform:translateY(-1px)}
+  .hint{color:#f6e9d0;margin-top:12px;font-size:13px;opacity:.8}
+  dialog{width:min(470px,92vw);border:0;border-radius:22px;padding:0;background:#f9efd9;color:#463d3a;box-shadow:0 25px 80px #0008}
+  dialog::backdrop{background:#07101a99;backdrop-filter:blur(3px)}
+  .card{padding:25px}
+  .card h2{font-weight:400;text-align:center;margin:0 0 17px;font-size:25px}
+  textarea{width:100%;min-height:170px;resize:vertical;border:1px solid #dbcbb0;border-radius:15px;padding:15px;font:18px/1.5 Georgia,serif;background:#fffaf0;color:#403a37;outline:none}
+  textarea:focus{border-color:#a78b6e;box-shadow:0 0 0 3px #a78b6e22}
+  .actions{display:flex;justify-content:flex-end;gap:10px;margin-top:15px}
+  .secondary{border:0;background:transparent;padding:11px 14px;border-radius:12px;cursor:pointer;color:#67594e;font:inherit}
+  .save{border:0;background:#554b43;color:#fff8ea;padding:11px 18px;border-radius:999px;cursor:pointer;font:inherit}
+  .memory-text{font-size:21px;line-height:1.6;text-align:center;white-space:pre-wrap}
+  .small{font-size:13px;opacity:.65;text-align:center;margin-top:15px}
+</style>
+</head>
+<body>
+<div class="sky"><div class="moon"></div>
+  <i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i>
+</div>
+
+<main class="scene">
+  <h1>Le cose che non volevo dimenticare</h1>
+  <p class="subtitle">Piccole cose. Grandi ricordi.</p>
+
+  <div class="jar-wrap">
+    <div class="jar">
+      <div class="lid"></div>
+      <div id="memories" class="memories"></div>
+    </div>
+  </div>
+
+  <div id="count" class="count">0 ricordi nel barattolo.</div>
+  <button class="main" id="add">＋ lascia un ricordo</button>
+  <div class="hint">clicca uno spiritello per leggere</div>
+</main>
+
+<dialog id="addDialog">
+  <form method="dialog" class="card" id="addForm">
+    <h2>Una cosa che non volevo dimenticare…</h2>
+    <textarea id="text" maxlength="1200" placeholder="Scrivi qui quello che vuoi conservare…"></textarea>
+    <div class="actions">
+      <button type="button" class="secondary" id="cancel">annulla</button>
+      <button type="submit" class="save">♡ conserva</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="viewDialog">
+  <div class="card">
+    <h2>Un piccolo ricordo</h2>
+    <div id="memoryText" class="memory-text"></div>
+    <p class="small">Solo una cosa che non volevo dimenticare.</p>
+    <div class="actions"><button class="save" id="closeView">chiudi</button></div>
+  </div>
+</dialog>
+
+<script>
+/*
+  DEMO: per ora i ricordi vengono salvati nel browser.
+  Quando colleghiamo Supabase, sostituiremo queste due funzioni
+  con il salvataggio online. Il resto del sito può rimanere uguale.
+*/
+const KEY = "le-cose-che-non-volevo-dimenticare-demo";
+const memories = JSON.parse(localStorage.getItem(KEY) || "[]");
+
+const box = document.getElementById("memories");
+const count = document.getElementById("count");
+const addDialog = document.getElementById("addDialog");
+const viewDialog = document.getElementById("viewDialog");
+const text = document.getElementById("text");
+
+function render(){
+  box.innerHTML = "";
+  if(!memories.length){
+    box.innerHTML = '<div class="empty">Il barattolo è ancora vuoto.<br>Forse c’è una prima cosa da non dimenticare.</div>';
+  } else {
+    memories.forEach((m,i)=>{
+      const b=document.createElement("button");
+      b.className="sprite";
+      b.title="Apri ricordo";
+      b.innerHTML='<span class="body"></span><span class="eye l"></span><span class="eye r"></span><span class="spark">★</span>';
+      b.onclick=()=>{
+        document.getElementById("memoryText").textContent=m;
+        viewDialog.showModal();
+      };
+      box.appendChild(b);
+    });
+  }
+  count.textContent = memories.length + (memories.length===1 ? " ricordo nel barattolo." : " ricordi nel barattolo.");
+}
+document.getElementById("add").onclick=()=>{text.value="";addDialog.showModal();setTimeout(()=>text.focus(),100)};
+document.getElementById("cancel").onclick=()=>addDialog.close();
+document.getElementById("closeView").onclick=()=>viewDialog.close();
+document.getElementById("addForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const value=text.value.trim();
+  if(!value) return;
+  memories.push(value);
+  localStorage.setItem(KEY,JSON.stringify(memories));
+  addDialog.close();
+  render();
+});
+render();
+</script>
+</body>
+</html>
