@@ -6,145 +6,304 @@
 <title>Le cose che non volevo dimenticare</title>
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif}
+html,body{margin:0;min-height:100%;font-family:"Courier New",monospace;color:#2e2927}
 body{
- min-height:100vh;overflow-x:hidden;color:#493a32;
- background:linear-gradient(#14253a 0%,#21384b 43%,#52615f 68%,#b89570 100%);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 20% 18%,#fffdf8 0 12%,transparent 32%),
+    linear-gradient(145deg,#f7f0df,#fbf8f1 55%,#f5eadb);
+  overflow-x:hidden;
 }
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.1;background:radial-gradient(#fff 1px,transparent 1px);background-size:5px 5px}
-.sky{position:fixed;inset:0 0 53%;pointer-events:none}
-.moon{position:absolute;right:12%;top:8%;width:57px;height:57px;border-radius:50%;background:#fff0c6;box-shadow:0 0 36px #ffe8a455}
-.sky i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff0bd;box-shadow:0 0 7px #ffe7a2}
-.s1{left:12%;top:20%}.s2{left:28%;top:11%}.s3{left:43%;top:29%}.s4{left:61%;top:17%}.s5{left:78%;top:28%}.s6{left:89%;top:14%}
-.hill{position:absolute;left:-10%;bottom:-95px;width:120%;height:160px;background:#2a4449;border-radius:50% 50% 0 0/75% 75% 0 0}
-.hill2{position:absolute;left:-10%;bottom:-125px;width:120%;height:155px;background:#1b353d;border-radius:50% 50% 0 0/75% 75% 0 0}
+.page{min-height:100vh;position:relative;padding:28px 18px 42px;text-align:center}
+.paper{
+  position:absolute;left:-5%;right:-5%;top:51%;height:38%;
+  background:#d9b57d;
+  opacity:.72;
+  transform:rotate(-1deg);
+  z-index:0;
+  clip-path:polygon(0 7%,4% 5%,8% 8%,13% 4%,18% 7%,24% 3%,30% 7%,36% 4%,43% 7%,50% 3%,58% 6%,64% 4%,71% 7%,77% 3%,84% 6%,91% 4%,100% 7%,100% 93%,95% 91%,90% 94%,83% 91%,76% 95%,69% 92%,62% 95%,55% 91%,48% 94%,40% 91%,33% 95%,26% 92%,19% 94%,12% 91%,5% 94%,0 91%);
+}
+h1{
+  position:relative;z-index:2;
+  margin:0 auto 8px;max-width:680px;
+  font-family:Georgia,serif;font-weight:400;
+  font-size:clamp(29px,7vw,45px);line-height:1.05;color:#2d5c80;
+}
+.subtitle{
+  position:relative;z-index:2;
+  margin:0 0 19px;font-family:Georgia,serif;
+  color:#55504b;font-size:17px;
+}
+.controls{
+  position:relative;z-index:4;
+  display:flex;flex-direction:column;align-items:flex-end;
+  gap:10px;width:min(310px,88vw);margin:0 auto 12px;
+}
+.control{
+  border:0;padding:9px 17px 10px;
+  color:#544033;background:#d4ad70;
+  font:16px "Courier New",monospace;
+  box-shadow:2px 3px 0 #a98658;
+  clip-path:polygon(2% 8%,98% 0,100% 89%,3% 100%);
+  cursor:pointer;
+}
+.control:hover{transform:rotate(-.5deg)}
+.jar-title{
+  position:relative;z-index:2;
+  margin:7px 0 2px;font-family:Georgia,serif;
+  font-size:27px;color:#35678d;
+}
+.counter{position:relative;z-index:2;font-size:16px;margin-bottom:8px}
 
-.wrap{position:relative;min-height:100vh;padding:35px 15px 34px;display:flex;flex-direction:column;align-items:center}
-h1{margin:0;color:#fff0d0;text-align:center;font-size:clamp(28px,7vw,48px);font-weight:400;line-height:1.08;text-shadow:0 3px 16px #07101c}
-.subtitle{margin:9px 0 17px;color:#f5e4c5;font-size:15px;text-align:center}
-
-/* Small, round, soft jar */
-.jar-stage{
- position:relative;width:min(390px,94vw);height:505px;display:flex;align-items:center;justify-content:center;
+/* illustrated jar */
+.jar-wrap{
+  position:relative;z-index:2;
+  width:min(390px,94vw);height:570px;
+  margin:0 auto;
 }
 .jar{
- position:relative;width:270px;height:335px;margin-top:27px;
- border:3px solid #ffffff9c;border-radius:47% 47% 42% 42% / 35% 35% 48% 48%;
- background:linear-gradient(90deg,#ffffff24,#ffffff08 25%,#ffffff0e 65%,#ffffff20);
- box-shadow:inset 12px 0 22px #fff3,inset -12px 0 20px #25170f12,0 25px 48px #120d0966;
- overflow:hidden;backdrop-filter:blur(1px);
+  position:absolute;left:50%;top:8px;transform:translateX(-50%);
+  width:min(320px,78vw);height:500px;
 }
-.jar:before{content:"";position:absolute;z-index:2;left:14px;top:22px;width:6px;height:260px;border-radius:8px;background:#ffffff35;transform:rotate(2deg)}
-.jar:after{content:"";position:absolute;z-index:2;right:22px;top:64px;width:13px;height:170px;border-radius:50%;background:#ffffff12;transform:rotate(4deg)}
-.lid{
- position:absolute;z-index:10;top:-20px;left:22px;width:226px;height:30px;border-radius:11px 11px 8px 8px;
- background:repeating-linear-gradient(90deg,#7c6a5b 0 4px,#ad9a86 4px 7px);
- box-shadow:0 4px 9px #21160f;
+.jar-shadow{
+  position:absolute;left:5%;right:5%;bottom:13px;height:30px;
+  background:#6c543f2a;border-radius:50%;filter:blur(8px);
 }
-.jar-glow{position:absolute;left:17%;right:17%;bottom:13px;height:62px;border-radius:50%;background:#ffd66d25;filter:blur(13px)}
-.memories{position:absolute;z-index:5;inset:47px 17px 19px}
+.jar-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.jar-body{fill:url(#glass);stroke:#77716b;stroke-width:2.5}
+.glass-line{fill:none;stroke:#fff;stroke-opacity:.72;stroke-width:4;stroke-linecap:round}
+.glass-soft{fill:none;stroke:#77716b;stroke-opacity:.23;stroke-width:7}
+.lid-main{fill:#a79a89;stroke:#74695e;stroke-width:2}
+.lid-ridge{fill:none;stroke:#665d54;stroke-width:2}
+.lid-shine{fill:none;stroke:#eee7dc;stroke-width:3;opacity:.7}
 
-/* Nerini */
+/* memories live in the jar */
+.memories{position:absolute;left:50%;top:94px;transform:translateX(-50%);width:245px;height:375px;z-index:5}
 .nerino{
- position:absolute;width:68px;height:74px;border:0;background:none;padding:0;cursor:pointer;
- filter:drop-shadow(0 4px 3px #170e0a44);transition:transform .22s ease;
+  position:absolute;width:62px;height:67px;border:0;background:none;padding:0;
+  cursor:pointer;filter:drop-shadow(0 3px 2px #4b382755);
+  transition:.2s;
 }
-.nerino:hover{transform:translateY(-6px) rotate(-4deg) scale(1.08)}
+.nerino:hover{transform:translateY(-5px) scale(1.08) rotate(-4deg)}
 .nerino svg{width:100%;height:100%;overflow:visible}
 .fur{fill:#111;stroke:#090909;stroke-width:1}
-.eye{fill:#fff;stroke:#090909;stroke-width:1}.pupil{fill:#241d1a}
+.eye{fill:#fff;stroke:#090909;stroke-width:1}.pupil{fill:#231d1a}
 .limb{fill:none;stroke:#111;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.star{stroke:#9a7436;stroke-width:1;filter:drop-shadow(0 0 4px #ffe59a)}
-.n1{left:2%;top:8%;transform:rotate(-7deg)}.n2{left:36%;top:3%;transform:rotate(5deg)}
-.n3{left:66%;top:12%;transform:rotate(-4deg)}.n4{left:14%;top:34%;transform:rotate(7deg)}
-.n5{left:46%;top:30%;transform:rotate(-6deg)}.n6{left:69%;top:44%;transform:rotate(6deg)}
-.n7{left:4%;top:57%;transform:rotate(-4deg)}.n8{left:35%;top:57%;transform:rotate(5deg)}
-.n9{left:60%;top:67%;transform:rotate(-7deg)}
+.star{stroke:#9b7b45;stroke-width:1;filter:drop-shadow(0 0 5px #ffe3a0)}
+.n1{left:4%;top:8%;transform:rotate(-8deg)}
+.n2{left:38%;top:3%;transform:rotate(5deg)}
+.n3{left:70%;top:15%;transform:rotate(-5deg)}
+.n4{left:18%;top:38%;transform:rotate(7deg)}
+.n5{left:48%;top:34%;transform:rotate(-7deg)}
+.n6{left:71%;top:49%;transform:rotate(6deg)}
+.n7{left:5%;top:61%;transform:rotate(-5deg)}
+.n8{left:39%;top:63%;transform:rotate(4deg)}
 
 .add{
- margin-top:0;border:1px solid #fff0ce88;border-radius:999px;padding:12px 20px;
- background:#f6e4c1;color:#4b3b31;font:16px Georgia,serif;box-shadow:0 8px 20px #24191255;cursor:pointer
+  position:relative;z-index:5;
+  border:0;background:#d3ad73;color:#493a30;
+  font:16px "Courier New",monospace;
+  padding:11px 20px;box-shadow:2px 3px 0 #aa875b;
+  clip-path:polygon(2% 8%,98% 0,100% 90%,3% 100%);
+  cursor:pointer;
 }
-.add:hover{background:#fff0d2}
-.count{color:#f7e5c7;font-size:14px;margin-top:9px}.tip{color:#f7e5c7;font-size:13px;opacity:.8;margin-top:7px}
+.hint{position:relative;z-index:2;margin:13px 0 0;color:#746b64;font-size:13px}
 
-dialog{width:min(460px,92vw);border:0;border-radius:24px;background:#f8edd8;color:#44362f;padding:0;box-shadow:0 30px 100px #000b}
-dialog::backdrop{background:#06101dcc;backdrop-filter:blur(4px)}
-.card{padding:27px}.card h2{text-align:center;font-weight:400;margin:0 0 17px;font-size:24px}
-textarea{width:100%;min-height:175px;border:1px solid #d4bea0;border-radius:16px;background:#fffaf0;padding:15px;font:18px/1.55 Georgia,serif;color:#44362f;resize:vertical;outline:none}
+dialog{
+  width:min(460px,92vw);border:0;border-radius:8px;
+  background:#fffaf0;color:#3d342f;padding:0;
+  box-shadow:0 25px 80px #0005;
+}
+dialog::backdrop{background:#211b1766}
+.card{padding:26px}
+.card h2{font-family:Georgia,serif;font-weight:400;margin:0 0 16px;font-size:23px}
+textarea{
+  width:100%;min-height:170px;border:1px solid #d6c6ae;
+  border-radius:5px;background:#fffdf8;padding:13px;
+  font:17px/1.5 Georgia,serif;resize:vertical;outline:none;
+}
 .actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
-.cancel{border:0;background:none;padding:10px 13px;font:16px Georgia,serif;color:#6a594d}
-.save{border:0;border-radius:999px;background:#50433c;color:#fff6e4;padding:11px 18px;font:16px Georgia,serif}
-.memory{font-size:21px;line-height:1.65;text-align:center;white-space:pre-wrap}.close{display:block;margin:20px auto 0}
+.cancel{border:0;background:none;padding:10px;font:15px "Courier New",monospace}
+.save{border:0;background:#d1aa70;padding:10px 16px;font:15px "Courier New",monospace;cursor:pointer}
+.memory-text{font:20px/1.6 Georgia,serif;white-space:pre-wrap;text-align:center}
+.close{display:block;margin:18px auto 0}
 </style>
 </head>
+
 <body>
-<div class="sky"><div class="moon"></div><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i><i class="s5"></i><i class="s6"></i><div class="hill"></div><div class="hill2"></div></div>
+<main class="page">
+  <div class="paper"></div>
 
-<main class="wrap">
-<h1>Le cose che non volevo<br>dimenticare</h1>
-<p class="subtitle">Piccole cose. Grandi ricordi.</p>
+  <h1>Le cose che non volevo<br>dimenticare</h1>
+  <div class="subtitle">Piccole cose. Grandi ricordi.</div>
 
-<section class="jar-stage">
- <div class="jar">
-  <div class="lid"></div><div class="jar-glow"></div><div id="memories" class="memories"></div>
- </div>
-</section>
+  <div class="controls">
+    <button class="control" id="topAdd">＋ lascia un ricordo</button>
+    <button class="control" id="viewAll">★ guarda tutti i ricordi</button>
+    <button class="control" id="share">♧ condividi il barattolo</button>
+  </div>
 
-<button class="add" id="add">＋ lascia un ricordo</button>
-<div class="count" id="count"></div>
-<div class="tip">clicca un Nerino per aprire ciò che hai scritto</div>
+  <div class="jar-title">il barattolo dei ricordi</div>
+  <div class="counter" id="counter">nessun ricordo ancora.</div>
+
+  <section class="jar-wrap">
+    <div class="jar-shadow"></div>
+    <div class="jar">
+      <svg class="jar-svg" viewBox="0 0 320 500" aria-hidden="true">
+        <defs>
+          <linearGradient id="glass" x1="0" x2="1">
+            <stop offset="0" stop-color="#dfe7e3" stop-opacity=".34"/>
+            <stop offset=".18" stop-color="#fff" stop-opacity=".14"/>
+            <stop offset=".52" stop-color="#fff" stop-opacity=".05"/>
+            <stop offset=".82" stop-color="#dce8e4" stop-opacity=".18"/>
+            <stop offset="1" stop-color="#aebcb9" stop-opacity=".3"/>
+          </linearGradient>
+          <linearGradient id="lid" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#c5baaa"/>
+            <stop offset=".5" stop-color="#918476"/>
+            <stop offset="1" stop-color="#b4a796"/>
+          </linearGradient>
+        </defs>
+
+        <!-- lid -->
+        <rect x="50" y="17" width="220" height="43" rx="10" fill="url(#lid)" stroke="#70665d" stroke-width="2"/>
+        <path class="lid-ridge" d="M57 25H263 M57 33H263 M57 41H263 M57 49H263"/>
+        <path class="lid-shine" d="M70 22H244"/>
+
+        <!-- jar rim -->
+        <path class="jar-body" d="M55 57
+          C55 48 68 43 80 43 H240
+          C252 43 265 48 265 57
+          L270 85
+          C273 102 279 111 279 128
+          V426
+          C279 460 260 483 225 490
+          C190 497 130 497 95 490
+          C60 483 41 460 41 426
+          V128
+          C41 111 47 102 50 85 Z"/>
+        <path class="glass-soft" d="M56 122 C51 180 53 385 59 430 C64 462 83 475 105 481"/>
+        <path class="glass-soft" d="M265 122 C270 190 267 395 260 432"/>
+        <path class="glass-line" d="M67 105 C58 155 61 392 71 433"/>
+        <path class="glass-line" d="M247 108 C260 170 256 380 248 431" opacity=".25"/>
+        <path class="glass-line" d="M82 473 C126 487 196 487 238 472" opacity=".4"/>
+      </svg>
+      <div class="memories" id="memories"></div>
+    </div>
+  </section>
+
+  <button class="add" id="add">＋ lascia un ricordo</button>
+  <div class="hint">clicca un Nerino per leggere ciò che hai scritto</div>
 </main>
 
-<dialog id="addDialog"><form class="card" id="addForm">
-<h2>Una cosa che non volevo dimenticare…</h2>
-<textarea id="text" maxlength="1600" placeholder="Scrivi qui…"></textarea>
-<div class="actions"><button type="button" class="cancel" id="cancel">annulla</button><button class="save">♡ conserva</button></div>
-</form></dialog>
+<dialog id="addDialog">
+<form class="card" id="addForm">
+  <h2>Una cosa che non volevo dimenticare…</h2>
+  <textarea id="text" maxlength="1600" placeholder="Scrivi qui…"></textarea>
+  <div class="actions">
+    <button type="button" class="cancel" id="cancel">annulla</button>
+    <button class="save">★ conserva</button>
+  </div>
+</form>
+</dialog>
 
-<dialog id="viewDialog"><div class="card">
-<h2>Un piccolo ricordo</h2><div id="memoryText" class="memory"></div>
-<button class="save close" id="closeView">chiudi</button>
-</div></dialog>
+<dialog id="viewDialog">
+<div class="card">
+  <h2>Un piccolo ricordo</h2>
+  <div class="memory-text" id="memoryText"></div>
+  <button class="save close" id="closeView">chiudi</button>
+</div>
+</dialog>
+
+<dialog id="allDialog">
+<div class="card">
+  <h2>Tutti i ricordi</h2>
+  <div id="allText" class="memory-text"></div>
+  <button class="save close" id="closeAll">chiudi</button>
+</div>
+</dialog>
 
 <script>
 const KEY="nerini-demo";
 const memories=JSON.parse(localStorage.getItem(KEY)||"[]");
-const colors=["#ffe06b","#aeea9b","#f6a6bd","#fff5dc","#a8d7f2","#ffd18b"];
+const colors=["#ffd36e","#a9dba4","#f3a5a5","#ffe8b1","#a9d8e8","#e9b3d0"];
 
 function nerinoSVG(i){
- const c=colors[i%colors.length];
- const poses=[
-  {fur:"M38 18 C31 16 26 21 27 27 C20 29 20 36 25 40 C20 46 26 53 32 52 C36 59 45 57 48 52 C56 54 60 47 56 42 C62 36 57 29 52 29 C51 22 45 18 38 18Z",e1:[32,35],e2:[44,34],star:"M54 17"},
-  {fur:"M39 18 C32 20 29 24 29 29 C22 29 21 36 26 40 C22 46 27 52 33 51 C35 58 44 59 48 53 C55 55 60 49 56 44 C62 39 57 32 53 31 C53 24 46 18 39 18Z",e1:[32,36],e2:[45,38],star:"M55 18"},
-  {fur:"M39 19 C32 17 27 22 29 29 C22 32 23 38 27 41 C23 48 29 53 35 52 C39 58 47 56 50 51 C57 52 60 45 56 41 C60 34 54 29 50 29 C49 23 45 19 39 19Z",e1:[32,37],e2:[44,37],star:"M54 15"}
- ][i%3];
- return `<svg viewBox="0 0 68 74" aria-hidden="true">
-  <path class="limb" d="M27 43 Q17 39 10 31 M49 43 Q57 37 61 29 M31 52 Q26 61 20 65 M45 52 Q50 61 56 64"/>
-  <path class="fur" d="${q.fur}"/>
-  <circle class="fur" cx="25" cy="25" r="4.5"/><circle class="fur" cx="51" cy="24" r="4.5"/>
-  <circle class="fur" cx="31" cy="20" r="3.5"/><circle class="fur" cx="46" cy="19" r="3.5"/>
-  <ellipse class="eye" cx="${q.e1[0]}" cy="${q.e1[1]}" rx="5" ry="6.5"/>
-  <ellipse class="eye" cx="${q.e2[0]}" cy="${q.e2[1]}" rx="5" ry="6.5"/>
-  <circle class="pupil" cx="${q.e1[0]+1}" cy="${q.e1[1]}" r="2"/>
-  <circle class="pupil" cx="${q.e2[0]-1}" cy="${q.e2[1]-1}" r="2"/>
-  <path class="limb" d="M29 46 Q36 50 44 46 M48 40 Q55 34 58 25"/>
-  <path class="star" fill="${c}" d="${q.star} l3 6 6.8 .8-5 4.7 1.4 6.5-6.2-3.5-6.2 3.5 1.4-6.5-5-4.7 6.8-.8z"/>
- </svg>`;
+  const c=colors[i%colors.length];
+  const q=[
+   {fur:"M38 18C31 16 26 21 27 27C20 29 20 36 25 40C20 46 26 53 32 52C36 59 45 57 48 52C56 54 60 47 56 42C62 36 57 29 52 29C51 22 45 18 38 18Z",e1:[32,35],e2:[44,34],star:"M54 17"},
+   {fur:"M39 18C32 20 29 24 29 29C22 29 21 36 26 40C22 46 27 52 33 51C35 58 44 59 48 53C55 55 60 49 56 44C62 39 57 32 53 31C53 24 46 18 39 18Z",e1:[32,36],e2:[45,38],star:"M55 18"},
+   {fur:"M39 19C32 17 27 22 29 29C22 32 23 38 27 41C23 48 29 53 35 52C39 58 47 56 50 51C57 52 60 45 56 41C60 34 54 29 50 29C49 23 45 19 39 19Z",e1:[32,37],e2:[44,37],star:"M54 15"}
+  ][i%3];
+  return `<svg viewBox="0 0 68 74">
+    <path class="limb" d="M27 43Q17 39 10 31M49 43Q57 37 61 29M31 52Q26 61 20 65M45 52Q50 61 56 64"/>
+    <path class="fur" d="${q.fur}"/>
+    <circle class="fur" cx="25" cy="25" r="4.5"/><circle class="fur" cx="51" cy="24" r="4.5"/>
+    <circle class="fur" cx="31" cy="20" r="3.5"/><circle class="fur" cx="46" cy="19" r="3.5"/>
+    <ellipse class="eye" cx="${q.e1[0]}" cy="${q.e1[1]}" rx="5" ry="6.5"/>
+    <ellipse class="eye" cx="${q.e2[0]}" cy="${q.e2[1]}" rx="5" ry="6.5"/>
+    <circle class="pupil" cx="${q.e1[0]+1}" cy="${q.e1[1]}" r="2"/>
+    <circle class="pupil" cx="${q.e2[0]-1}" cy="${q.e2[1]-1}" r="2"/>
+    <path class="limb" d="M29 46Q36 50 44 46"/>
+    <path class="star" fill="${c}" d="${q.star}l3 6 6.8 .8-5 4.7 1.4 6.5-6.2-3.5-6.2 3.5 1.4-6.5-5-4.7 6.8-.8z"/>
+  </svg>`;
 }
+
 function render(){
- const box=document.getElementById("memories");box.innerHTML="";
- memories.forEach((m,i)=>{
-  const b=document.createElement("button");b.className="nerino n"+((i%9)+1);b.title="Apri ricordo";b.innerHTML=nerinoSVG(i);
-  b.onclick=()=>{document.getElementById("memoryText").textContent=m;document.getElementById("viewDialog").showModal()};
-  box.appendChild(b);
- });
- document.getElementById("count").textContent=memories.length?(memories.length===1?"1 ricordo conservato.":memories.length+" ricordi conservati."):"";
+  const box=document.getElementById("memories");
+  box.innerHTML="";
+  memories.forEach((m,i)=>{
+    const b=document.createElement("button");
+    b.className="nerino n"+((i%8)+1);
+    b.title="Apri ricordo";
+    b.innerHTML=nerinoSVG(i);
+    b.onclick=()=>{
+      document.getElementById("memoryText").textContent=m;
+      document.getElementById("viewDialog").showModal();
+    };
+    box.appendChild(b);
+  });
+  const n=memories.length;
+  document.getElementById("counter").textContent =
+    n===0 ? "nessun ricordo ancora." : n===1 ? "1 ricordo conservato." : n+" ricordi conservati.";
 }
-document.getElementById("add").onclick=()=>{document.getElementById("text").value="";document.getElementById("addDialog").showModal();setTimeout(()=>document.getElementById("text").focus(),80)};
+function openAdd(){
+  document.getElementById("text").value="";
+  document.getElementById("addDialog").showModal();
+  setTimeout(()=>document.getElementById("text").focus(),80);
+}
+document.getElementById("add").onclick=openAdd;
+document.getElementById("topAdd").onclick=openAdd;
 document.getElementById("cancel").onclick=()=>document.getElementById("addDialog").close();
 document.getElementById("closeView").onclick=()=>document.getElementById("viewDialog").close();
-document.getElementById("addForm").onsubmit=e=>{e.preventDefault();const v=document.getElementById("text").value.trim();if(!v)return;memories.push(v);localStorage.setItem(KEY,JSON.stringify(memories));document.getElementById("addDialog").close();render()};
+document.getElementById("closeAll").onclick=()=>document.getElementById("allDialog").close();
+
+document.getElementById("addForm").onsubmit=e=>{
+  e.preventDefault();
+  const v=document.getElementById("text").value.trim();
+  if(!v)return;
+  memories.push(v);
+  localStorage.setItem(KEY,JSON.stringify(memories));
+  document.getElementById("addDialog").close();
+  render();
+};
+
+document.getElementById("viewAll").onclick=()=>{
+  const el=document.getElementById("allText");
+  el.innerHTML=memories.length
+    ? memories.map((m,i)=>`<div style="margin-bottom:18px"><b>★ ${i+1}</b><br>${m.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>`).join("")
+    : "Non hai ancora lasciato nessun ricordo.";
+  document.getElementById("allDialog").showModal();
+};
+
+document.getElementById("share").onclick=async()=>{
+  const data={title:"Le cose che non volevo dimenticare",text:"Un piccolo barattolo di ricordi."};
+  if(navigator.share){
+    try{await navigator.share({title:data.title,text:data.text,url:location.href})}catch(e){}
+  }else{
+    try{await navigator.clipboard.writeText(location.href);alert("Link copiato!") }catch(e){alert("Copia il link dalla barra del browser.")}
+  }
+};
 render();
 </script>
 </body>
