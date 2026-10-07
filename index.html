@@ -5,92 +5,48 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Le cose che non volevo dimenticare</title>
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif;color:#443936}
-body{
-  min-height:100vh;overflow-x:hidden;
-  background:
-    radial-gradient(circle at 50% 24%,rgba(255,235,190,.2),transparent 27%),
-    linear-gradient(#142238 0 45%,#2d3f4a 45%,#87725e 62%,#cdb28b 100%);
-}
-body:after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background:radial-gradient(#fff 1px,transparent 1px);background-size:5px 5px}
-.sky{position:fixed;inset:0 0 51%;pointer-events:none}
-.moon{position:absolute;right:11%;top:8%;width:64px;height:64px;border-radius:50%;background:#fff0c5;box-shadow:0 0 40px #ffe9a666}
-.sky-star{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff1bf;box-shadow:0 0 8px #ffe5a1}
-.s1{left:12%;top:19%}.s2{left:25%;top:31%}.s3{left:43%;top:13%}.s4{left:62%;top:27%}.s5{left:78%;top:18%}.s6{left:88%;top:34%}
-.hill{position:absolute;bottom:-70px;left:-10%;width:120%;height:160px;background:#263f47;border-radius:50% 50% 0 0/75% 75% 0 0}
-.hill2{position:absolute;bottom:-110px;left:-10%;width:120%;height:170px;background:#19333c;border-radius:50% 50% 0 0/75% 75% 0 0}
-.wrap{position:relative;min-height:100vh;padding:44px 14px 38px;display:flex;flex-direction:column;align-items:center}
-h1{margin:0;text-align:center;color:#fff3d2;font-weight:400;font-size:clamp(31px,8vw,58px);line-height:1.05;text-shadow:0 3px 18px #07101c}
-.subtitle{color:#f7e8c9;text-align:center;font-size:17px;margin:10px 0 25px}
-.desk{width:min(520px,96vw);padding:22px 12px 20px;background:rgba(87,58,43,.16);border-radius:36px}
-.jar-area{width:min(380px,90vw);margin:0 auto;position:relative}
-.jar{
- position:relative;height:500px;border:4px solid #ffffff9c;border-top-width:9px;border-radius:43px 43px 54px 54px;
- background:linear-gradient(90deg,#ffffff25,#ffffff08 28%,#ffffff15 65%,#ffffff28);
- box-shadow:inset 14px 0 25px #ffffff26,inset -13px 0 25px #25191212,0 28px 55px #18100c66;
- overflow:hidden
-}
-.jar:before{content:"";position:absolute;left:13px;top:22px;width:8px;height:425px;border-radius:10px;background:#fff4}
-.lid{position:absolute;z-index:4;top:-18px;left:8%;width:84%;height:30px;border-radius:10px;background:repeating-linear-gradient(90deg,#817263 0 4px,#b0a08d 4px 7px);box-shadow:0 4px 8px #2c211b}
-.bottom-glow{position:absolute;left:9%;right:9%;bottom:8px;height:70px;border-radius:50%;background:#f7d98b28;filter:blur(14px)}
-.memories{position:absolute;inset:72px 18px 26px;display:flex;align-content:center;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px 4px}
-.empty{color:#fff0d2;text-align:center;line-height:1.6;font-size:18px;text-shadow:0 2px 7px #30241e;padding:35px}
-.spirit{width:76px;height:76px;position:relative;border:0;background:none;cursor:pointer;filter:drop-shadow(0 5px 5px #19100c55);transition:transform .2s}
-.spirit:hover{transform:translateY(-7px) rotate(-4deg) scale(1.08)}
-.fuzz{position:absolute;left:13px;top:17px;width:49px;height:47px;border-radius:48% 54% 46% 51%;background:#101010}
-.fuzz:before{
- content:"";position:absolute;inset:-7px;border-radius:50%;
- background:
- radial-gradient(circle at 8% 25%,#101010 0 5px,transparent 5.5px),
- radial-gradient(circle at 91% 18%,#101010 0 6px,transparent 6.5px),
- radial-gradient(circle at 95% 72%,#101010 0 5px,transparent 5.5px),
- radial-gradient(circle at 10% 78%,#101010 0 6px,transparent 6.5px),
- radial-gradient(circle at 50% 0%,#101010 0 6px,transparent 6.5px);
-}
-.eye{position:absolute;z-index:2;top:31px;width:12px;height:15px;background:#fff;border-radius:50%;box-shadow:0 1px 2px #0008}
-.eye:after{content:"";position:absolute;width:4px;height:7px;left:4px;top:4px;border-radius:50%;background:#24201f}
-.e1{left:25px}.e2{left:42px}
-.arm{position:absolute;z-index:1;top:49px;width:27px;height:5px;border-radius:50%;background:#111}
-.a1{left:0;transform:rotate(25deg)}.a2{right:0;transform:rotate(-25deg)}
-.leg{position:absolute;z-index:1;top:61px;width:22px;height:4px;background:#111;border-radius:50%}
-.l1{left:22px;transform:rotate(72deg)}.l2{left:40px;transform:rotate(-72deg)}
-.spark{position:absolute;z-index:5;right:-1px;top:-2px;font-size:25px;line-height:1;color:#ffd86a;text-shadow:0 0 8px #ffeaa0}
-.count{text-align:center;color:#f8e8c9;font-size:15px;margin:14px 0 16px}
-.add{border:1px solid #fff4d477;border-radius:999px;background:#f7e6c5;color:#4a3a31;padding:13px 22px;font:17px Georgia,serif;box-shadow:0 8px 22px #34231c55;cursor:pointer}
-.add:hover{background:#fff0d0}
-.tip{color:#f6e5c6;font-size:13px;opacity:.82;margin-top:11px}
-dialog{width:min(460px,92vw);border:0;border-radius:24px;padding:0;background:#f8edd7;color:#443936;box-shadow:0 30px 100px #000b}
-dialog::backdrop{background:#06101dcc;backdrop-filter:blur(4px)}
-.card{padding:27px}
-.card h2{text-align:center;font-weight:400;font-size:25px;margin:0 0 18px}
-textarea{width:100%;min-height:180px;border:1px solid #d6c1a0;border-radius:16px;background:#fffaf0;padding:15px;font:18px/1.55 Georgia,serif;color:#443936;resize:vertical;outline:none}
-textarea:focus{border-color:#96765a;box-shadow:0 0 0 3px #96765a22}
+*{box-sizing:border-box} html,body{margin:0;min-height:100%}
+body{font-family:Georgia,"Times New Roman",serif;color:#44362f;background:#17283b}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(#14243a,#273c49 45%,#6f5a49);z-index:-2}
+.wrap{min-height:100vh;padding:30px 14px 44px;display:flex;flex-direction:column;align-items:center}
+h1{margin:0;text-align:center;color:#fff0cd;font-size:clamp(31px,8vw,56px);font-weight:400;line-height:1.04;text-shadow:0 3px 18px #050b13}
+.subtitle{color:#f7e5c3;text-align:center;font-size:16px;margin:10px 0 20px}
+.scene{width:min(650px,100%);position:relative;border-radius:34px;overflow:hidden;box-shadow:0 22px 70px #080b0f99}
+.scene img{display:block;width:100%;height:auto}
+.hotspot{position:absolute;width:15%;aspect-ratio:1;border:0;background:transparent;border-radius:50%;cursor:pointer;filter:drop-shadow(0 0 10px transparent)}
+.hotspot:hover{filter:drop-shadow(0 0 14px #ffe7a0)}
+/* approximate clickable nerini positions in the illustrated jar */
+.h1{left:35%;top:37%}.h2{left:48%;top:30%}.h3{left:63%;top:42%}.h4{left:42%;top:52%}
+.h5{left:56%;top:58%}.h6{left:68%;top:62%}.h7{left:29%;top:65%}.h8{left:51%;top:72%}
+.panel{margin-top:20px;width:min(650px,100%);display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+button.add{border:0;border-radius:999px;padding:13px 22px;background:#f6e4c0;color:#4b3b31;font:17px Georgia,serif;box-shadow:0 8px 22px #090c1099;cursor:pointer}
+.count{color:#f8e8c8;font-size:14px;text-align:center;margin-top:10px}
+dialog{width:min(470px,92vw);border:0;border-radius:24px;background:#f8edd8;color:#44362f;padding:0;box-shadow:0 30px 100px #000b}
+dialog::backdrop{background:#07111dcc;backdrop-filter:blur(4px)}
+.card{padding:26px}.card h2{text-align:center;font-weight:400;margin:0 0 17px}
+textarea{width:100%;min-height:170px;border:1px solid #d4bea0;border-radius:15px;background:#fffaf0;padding:14px;font:18px/1.55 Georgia,serif;resize:vertical;outline:0}
 .actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
-.cancel{border:0;background:none;padding:11px 13px;color:#68594e;font:16px Georgia,serif}
-.save{border:0;border-radius:999px;background:#50433c;color:#fff6e4;padding:11px 18px;font:16px Georgia,serif}
-.memory{white-space:pre-wrap;text-align:center;font-size:21px;line-height:1.65}
+.cancel{border:0;background:none;padding:10px 13px;font:16px Georgia,serif;color:#6a594c}
+.save{border:0;border-radius:999px;background:#51443c;color:#fff5e4;padding:11px 18px;font:16px Georgia,serif}
+.memory{font-size:21px;line-height:1.6;text-align:center;white-space:pre-wrap}
 .close{display:block;margin:20px auto 0}
+.note{color:#f5e4c4;text-align:center;font-size:13px;opacity:.82;margin-top:10px}
 </style>
 </head>
 <body>
-<div class="sky"><div class="moon"></div><i class="sky-star s1"></i><i class="sky-star s2"></i><i class="sky-star s3"></i><i class="sky-star s4"></i><i class="sky-star s5"></i><i class="sky-star s6"></i><div class="hill"></div><div class="hill2"></div></div>
-
 <main class="wrap">
 <h1>Le cose che non volevo<br>dimenticare</h1>
 <p class="subtitle">Piccole cose. Grandi ricordi.</p>
 
-<section class="desk">
- <div class="jar-area">
-  <div class="jar">
-   <div class="lid"></div><div class="bottom-glow"></div><div id="memories" class="memories"></div>
-  </div>
- </div>
-</section>
+<div class="scene" id="scene">
+  <img src="nerini-scene.png" alt="Un barattolo pieno di nerini del buio con piccole stelline">
+</div>
 
-<div id="count" class="count"></div>
-<button class="add" id="add">＋ lascia un ricordo</button>
-<div class="tip">clicca un nerino per aprire ciò che hai scritto</div>
+<div class="panel">
+  <button class="add" id="add">＋ lascia un ricordo</button>
+</div>
+<div class="count" id="count"></div>
+<div class="note">clicca un nerino per aprire ciò che hai scritto</div>
 </main>
 
 <dialog id="addDialog"><form class="card" id="addForm">
@@ -105,25 +61,30 @@ textarea:focus{border-color:#96765a;box-shadow:0 0 0 3px #96765a22}
 </div></dialog>
 
 <script>
-const KEY="le-cose-che-non-volevo-dimenticare-demo";
+const KEY="nerini-ricordi-demo";
 const memories=JSON.parse(localStorage.getItem(KEY)||"[]");
-const box=document.getElementById("memories"),count=document.getElementById("count"),text=document.getElementById("text");
-const addDialog=document.getElementById("addDialog"),viewDialog=document.getElementById("viewDialog");
+const scene=document.getElementById("scene"), count=document.getElementById("count");
+const addDialog=document.getElementById("addDialog"), viewDialog=document.getElementById("viewDialog"), text=document.getElementById("text");
+
+const positions=["h1","h2","h3","h4","h5","h6","h7","h8"];
 function render(){
- box.innerHTML="";
- if(!memories.length) box.innerHTML='<div class="empty">Il barattolo è ancora vuoto.<br>Forse c’è una prima cosa<br>che non vuoi dimenticare.</div>';
- else memories.forEach(m=>{
-   const b=document.createElement("button");b.className="spirit";b.title="Apri ricordo";
-   b.innerHTML='<span class="fuzz"></span><span class="eye e1"></span><span class="eye e2"></span><span class="arm a1"></span><span class="arm a2"></span><span class="leg l1"></span><span class="leg l2"></span><span class="spark">★</span>';
-   b.onclick=()=>{document.getElementById("memoryText").textContent=m;viewDialog.showModal()};
-   box.appendChild(b);
- });
- count.textContent=memories.length?(memories.length===1?"1 ricordo conservato.":memories.length+" ricordi conservati."):"";
+  scene.querySelectorAll(".hotspot").forEach(x=>x.remove());
+  memories.forEach((m,i)=>{
+    const b=document.createElement("button");
+    b.className="hotspot "+positions[i%positions.length];
+    b.setAttribute("aria-label","Apri ricordo");
+    b.onclick=()=>{document.getElementById("memoryText").textContent=m;viewDialog.showModal()};
+    scene.appendChild(b);
+  });
+  count.textContent=memories.length?(memories.length===1?"1 ricordo conservato.":memories.length+" ricordi conservati."):"";
 }
 document.getElementById("add").onclick=()=>{text.value="";addDialog.showModal();setTimeout(()=>text.focus(),100)};
 document.getElementById("cancel").onclick=()=>addDialog.close();
 document.getElementById("closeView").onclick=()=>viewDialog.close();
-document.getElementById("addForm").onsubmit=e=>{e.preventDefault();const v=text.value.trim();if(!v)return;memories.push(v);localStorage.setItem(KEY,JSON.stringify(memories));addDialog.close();render()};
+document.getElementById("addForm").onsubmit=e=>{
+ e.preventDefault(); const v=text.value.trim(); if(!v)return;
+ memories.push(v);localStorage.setItem(KEY,JSON.stringify(memories));addDialog.close();render();
+};
 render();
 </script>
 </body>
