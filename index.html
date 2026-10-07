@@ -10,14 +10,15 @@ html,body{margin:0;min-height:100%;font-family:"Courier New",monospace;color:#2e
 body{
   min-height:100vh;
   background:
-    radial-gradient(circle at 20% 18%,#fffdf8 0 12%,transparent 32%),
-    linear-gradient(145deg,#f7f0df,#fbf8f1 55%,#f5eadb);
+    radial-gradient(circle at 18% 14%,#fff8df 0 10%,transparent 31%),
+    radial-gradient(circle at 82% 72%,#dfe8d4 0 8%,transparent 30%),
+    linear-gradient(145deg,#f4ead8,#fbf5e9 52%,#e7dfc9);
   overflow-x:hidden;
 }
 .page{min-height:100vh;position:relative;padding:28px 18px 42px;text-align:center}
 .paper{
   position:absolute;left:-5%;right:-5%;top:51%;height:38%;
-  background:#d9b57d;
+  background:#aebc8d;
   opacity:.72;
   transform:rotate(-1deg);
   z-index:0;
@@ -27,12 +28,12 @@ h1{
   position:relative;z-index:2;
   margin:0 auto 8px;max-width:680px;
   font-family:Georgia,serif;font-weight:400;
-  font-size:clamp(29px,7vw,45px);line-height:1.05;color:#2d5c80;
+  font-size:clamp(29px,7vw,45px);line-height:1.05;color:#58715b;
 }
 .subtitle{
   position:relative;z-index:2;
   margin:0 0 19px;font-family:Georgia,serif;
-  color:#55504b;font-size:17px;
+  color:#665f55;font-size:17px;
 }
 .controls{
   position:relative;z-index:4;
@@ -41,9 +42,9 @@ h1{
 }
 .control{
   border:0;padding:9px 17px 10px;
-  color:#544033;background:#d4ad70;
+  color:#4b5040;background:#d8c58e;
   font:16px "Courier New",monospace;
-  box-shadow:2px 3px 0 #a98658;
+  box-shadow:2px 3px 0 #82916a;
   clip-path:polygon(2% 8%,98% 0,100% 89%,3% 100%);
   cursor:pointer;
 }
@@ -51,7 +52,7 @@ h1{
 .jar-title{
   position:relative;z-index:2;
   margin:7px 0 2px;font-family:Georgia,serif;
-  font-size:27px;color:#35678d;
+  font-size:27px;color:#657b61;
 }
 .counter{position:relative;z-index:2;font-size:16px;margin-bottom:8px}
 
@@ -84,26 +85,31 @@ h1{
   cursor:pointer;filter:drop-shadow(0 3px 2px #4b382755);
   transition:.2s;
 }
-.nerino:hover{transform:translateY(-5px) scale(1.08) rotate(-4deg)}
+.nerino{animation:floatNerino 4.2s ease-in-out infinite;animation-delay:var(--delay,0s)}
+.nerino:hover{animation-play-state:paused;transform:translateY(-5px) scale(1.08) rotate(-4deg)}
+@keyframes floatNerino{
+  0%,100%{margin-top:0;transform:rotate(var(--rot,0deg))}
+  50%{margin-top:-7px;transform:rotate(calc(var(--rot,0deg) + 2deg))}
+}
 .nerino svg{width:100%;height:100%;overflow:visible}
 .fur{fill:#111;stroke:#090909;stroke-width:1}
 .eye{fill:#fff;stroke:#090909;stroke-width:1}.pupil{fill:#231d1a}
 .limb{fill:none;stroke:#111;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .star{stroke:#9b7b45;stroke-width:1;filter:drop-shadow(0 0 5px #ffe3a0)}
-.n1{left:4%;top:8%;transform:rotate(-8deg)}
-.n2{left:38%;top:3%;transform:rotate(5deg)}
-.n3{left:70%;top:15%;transform:rotate(-5deg)}
-.n4{left:18%;top:38%;transform:rotate(7deg)}
-.n5{left:48%;top:34%;transform:rotate(-7deg)}
-.n6{left:71%;top:49%;transform:rotate(6deg)}
-.n7{left:5%;top:61%;transform:rotate(-5deg)}
-.n8{left:39%;top:63%;transform:rotate(4deg)}
+.n1{--rot:-8deg;--delay:.1s;left:4%;top:8%;}
+.n2{--rot:5deg;--delay:.8s;left:38%;top:3%;}
+.n3{--rot:-5deg;--delay:1.4s;left:70%;top:15%;}
+.n4{--rot:7deg;--delay:2.1s;left:18%;top:38%;}
+.n5{--rot:-7deg;--delay:2.8s;left:48%;top:34%;}
+.n6{--rot:6deg;--delay:1.7s;left:71%;top:49%;}
+.n7{--rot:-5deg;--delay:3.2s;left:5%;top:61%;}
+.n8{--rot:4deg;--delay:2.4s;left:39%;top:63%;}
 
 .add{
   position:relative;z-index:5;
-  border:0;background:#d3ad73;color:#493a30;
+  border:0;background:#d9bd7d;color:#4b4438;
   font:16px "Courier New",monospace;
-  padding:11px 20px;box-shadow:2px 3px 0 #aa875b;
+  padding:11px 20px;box-shadow:2px 3px 0 #a18b60;
   clip-path:polygon(2% 8%,98% 0,100% 90%,3% 100%);
   cursor:pointer;
 }
@@ -140,7 +146,6 @@ textarea{
   <div class="controls">
     <button class="control" id="topAdd">＋ lascia un ricordo</button>
     <button class="control" id="viewAll">★ guarda tutti i ricordi</button>
-    <button class="control" id="share">♧ condividi il barattolo</button>
   </div>
 
   <div class="jar-title">il barattolo dei ricordi</div>
@@ -211,7 +216,10 @@ textarea{
 <div class="card">
   <h2>Un piccolo ricordo</h2>
   <div class="memory-text" id="memoryText"></div>
-  <button class="save close" id="closeView">chiudi</button>
+  <div class="actions" style="justify-content:center">
+    <button class="cancel" id="deleteMemory">elimina questo ricordo</button>
+    <button class="save" id="closeView">chiudi</button>
+  </div>
 </div>
 </dialog>
 
@@ -226,7 +234,8 @@ textarea{
 <script>
 const KEY="nerini-demo";
 const memories=JSON.parse(localStorage.getItem(KEY)||"[]");
-const colors=["#ffd36e","#a9dba4","#f3a5a5","#ffe8b1","#a9d8e8","#e9b3d0"];
+const colors=["#f2cf70","#a9c98f","#e9a79c","#f5dfaa","#a7c9c2","#d9a9b8"];
+let selectedMemoryIndex=-1;
 
 function nerinoSVG(i){
   const c=colors[i%colors.length];
@@ -258,6 +267,7 @@ function render(){
     b.title="Apri ricordo";
     b.innerHTML=nerinoSVG(i);
     b.onclick=()=>{
+      selectedMemoryIndex=i;
       document.getElementById("memoryText").textContent=m;
       document.getElementById("viewDialog").showModal();
     };
@@ -276,6 +286,16 @@ document.getElementById("add").onclick=openAdd;
 document.getElementById("topAdd").onclick=openAdd;
 document.getElementById("cancel").onclick=()=>document.getElementById("addDialog").close();
 document.getElementById("closeView").onclick=()=>document.getElementById("viewDialog").close();
+document.getElementById("deleteMemory").onclick=()=>{
+  if(selectedMemoryIndex<0)return;
+  if(confirm("Sicura di voler eliminare questo ricordo?")){
+    memories.splice(selectedMemoryIndex,1);
+    localStorage.setItem(KEY,JSON.stringify(memories));
+    selectedMemoryIndex=-1;
+    document.getElementById("viewDialog").close();
+    render();
+  }
+};
 document.getElementById("closeAll").onclick=()=>document.getElementById("allDialog").close();
 
 document.getElementById("addForm").onsubmit=e=>{
@@ -296,14 +316,7 @@ document.getElementById("viewAll").onclick=()=>{
   document.getElementById("allDialog").showModal();
 };
 
-document.getElementById("share").onclick=async()=>{
-  const data={title:"Le cose che non volevo dimenticare",text:"Un piccolo barattolo di ricordi."};
-  if(navigator.share){
-    try{await navigator.share({title:data.title,text:data.text,url:location.href})}catch(e){}
-  }else{
-    try{await navigator.clipboard.writeText(location.href);alert("Link copiato!") }catch(e){alert("Copia il link dalla barra del browser.")}
-  }
-};
+
 render();
 </script>
 </body>
