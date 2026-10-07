@@ -25,6 +25,24 @@ body{
   z-index:0;
   clip-path:polygon(0 7%,4% 5%,8% 8%,13% 4%,18% 7%,24% 3%,30% 7%,36% 4%,43% 7%,50% 3%,58% 6%,64% 4%,71% 7%,77% 3%,84% 6%,91% 4%,100% 7%,100% 93%,95% 91%,90% 94%,83% 91%,76% 95%,69% 92%,62% 95%,55% 91%,48% 94%,40% 91%,33% 95%,26% 92%,19% 94%,12% 91%,5% 94%,0 91%);
 }
+/* tiny enchanted-forest details */
+.ground-details{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.grass{position:absolute;width:3px;height:20px;border-radius:100% 0 100% 0;background:#526b50;transform-origin:bottom}
+.g1{left:29%;bottom:15%;transform:rotate(-22deg)}.g2{left:70%;bottom:14%;transform:rotate(25deg)}.g3{left:78%;bottom:17%;height:15px;transform:rotate(-12deg)}
+.leaf{position:absolute;width:17px;height:8px;border-radius:100% 0 100% 0;background:#71875e;opacity:.8}
+.l1{left:21%;bottom:14%;transform:rotate(25deg)}.l2{right:20%;bottom:12%;transform:rotate(-30deg)}
+.mushroom{position:absolute;width:17px;height:13px;border-radius:60% 60% 35% 35%;background:#bd7563;bottom:13%;z-index:2}
+.mushroom:after{content:"";position:absolute;width:5px;height:11px;left:6px;top:9px;background:#e8d8b9;border-radius:0 0 4px 4px}
+.mushroom i,.mushroom i:before,.mushroom i:after{position:absolute;width:3px;height:3px;border-radius:50%;background:#f2d99e;content:""}
+.mushroom i{left:4px;top:4px}.mushroom i:before{left:7px;top:2px}.mushroom i:after{left:3px;top:-2px}
+.m1{left:24%;transform:scale(.75)}.m2{right:23%;transform:scale(.55)}
+.firefly{position:absolute;width:4px;height:4px;border-radius:50%;background:#f6d77e;box-shadow:0 0 10px #ffe59a;animation:twinkle 3.2s ease-in-out infinite}
+.f1{left:24%;bottom:28%}.f2{right:26%;bottom:33%;animation-delay:1.1s}.f3{left:73%;bottom:25%;animation-delay:2s}
+
+/* a soft glass response when a Nerino is hovered */
+.jar{transition:filter .3s ease}
+.jar:has(.nerino:hover){filter:drop-shadow(0 15px 25px #142b2c55) drop-shadow(0 0 13px #ffe1a322)}
+
 /* cozy enchanted-fantasy atmosphere */
 .fantasy-sky{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .fantasy-moon{
@@ -149,6 +167,11 @@ h1{
 }
 .nerino{animation:floatNerino 4.2s ease-in-out infinite;animation-delay:var(--delay,0s)}
 .nerino:hover{animation-play-state:paused;transform:translateY(-5px) scale(1.08) rotate(-4deg)}
+.nerino:hover .star{filter:drop-shadow(0 0 8px #ffe6a8) drop-shadow(0 0 15px #ffe6a855)}
+.nerino:hover:after{
+  content:"";position:absolute;left:58%;top:20%;width:15px;height:5px;
+  border-radius:100%;background:#fff9d966;transform:rotate(-28deg);filter:blur(1px);
+}
 @keyframes floatNerino{
   0%,100%{margin-top:0;transform:rotate(var(--rot,0deg))}
   50%{margin-top:-7px;transform:rotate(calc(var(--rot,0deg) + 2deg))}
@@ -200,7 +223,13 @@ textarea{
 
 <body>
 <main class="page">
-  <div class="fantasy-sky" aria-hidden="true">
+  <div class="ground-details" aria-hidden="true">
+  <span class="grass g1"></span><span class="grass g2"></span><span class="grass g3"></span>
+  <span class="leaf l1"></span><span class="leaf l2"></span>
+  <span class="mushroom m1"><i></i></span><span class="mushroom m2"><i></i></span>
+  <span class="firefly f1"></span><span class="firefly f2"></span><span class="firefly f3"></span>
+</div>
+<div class="fantasy-sky" aria-hidden="true">
     <span class="fantasy-moon"></span>
     <span class="cloud cloud-a"></span><span class="cloud cloud-b"></span>
     <i class="spark sp1"></i><i class="spark sp2"></i><i class="spark sp3"></i>
