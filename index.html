@@ -365,20 +365,44 @@ function nerinoSVG(i, memoryText=""){
 function render(){
   const box=document.getElementById("memories");
   box.innerHTML="";
-  // Distribuzione a griglia: ogni ricordo ha una posizione propria, senza riutilizzare
-  // le posizioni iniziali quando si supera il numero di Nerini previsto in origine.
-  const columns = [1, 34, 67];
-  const rowHeight = 51;
-  box.style.overflowY = memories.length > 18 ? "auto" : "visible";
+  // Distribuzione casuale ma stabile: i Nerini sono sparsi nel barattolo,
+  // con spazio minimo tra loro per evitare sovrapposizioni.
+  const itemW = 38, itemH = 42, minGapX = 42, minGapY = 46;
+  const areaW = 235;
+  let layoutHeight = Math.max(365, Math.ceil(memories.length / 22) * 365);
+  let positions = [];
+  // Seed stabile: gli stessi ricordi mantengono la stessa disposizione al riaprire il sito.
+  function makeRng(seed){
+    let state = seed >>> 0;
+    return () => { state = (state * 1664525 + 1013904223) >>> 0; return state / 4294967296; };
+  }
+  function placeAll(height){
+    const rand = makeRng(739391 + memories.length * 97);
+    const placed = [];
+    for(let i=0;i<memories.length;i++){
+      let found = null;
+      for(let attempt=0;attempt<5000;attempt++){
+        const x = Math.round(rand() * (areaW - itemW));
+        const y = Math.round(rand() * (height - itemH));
+        if(placed.every(p => Math.abs(x-p.x) >= minGapX || Math.abs(y-p.y) >= minGapY)){
+          found = {x,y}; break;
+        }
+      }
+      if(!found) return null;
+      placed.push(found);
+    }
+    return placed;
+  }
+  while(!(positions = placeAll(layoutHeight))) layoutHeight += 100;
+  box.style.overflowY = memories.length > 22 ? "auto" : "visible";
   box.style.height = "365px";
+  box.style.width = areaW + "px";
   memories.forEach((m,i)=>{
     const b=document.createElement("button");
     b.className="nerino";
-    const col = i % 3;
-    const row = Math.floor(i / 3);
-    const rotations = [-7, 4, -3, 6, -5, 3];
-    b.style.left=columns[col]+"%";
-    b.style.top=(2 + row * rowHeight)+"px";
+    const rotations = [-11, 7, -4, 9, -8, 3, 12, -6, 5, -2];
+    b.style.left=positions[i].x+"px";
+    b.style.top=positions[i].y+"px";
     b.style.setProperty("--rot",rotations[i % rotations.length]+"deg");
     b.style.setProperty("--delay",(i*0.37%3.5).toFixed(2)+"s");
     b.title="Apri ricordo";
