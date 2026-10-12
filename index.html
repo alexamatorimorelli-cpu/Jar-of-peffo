@@ -6,114 +6,34 @@
 <title>Le cose che non volevo dimenticare</title>
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:"Courier New",monospace;color:#2e2927}
-body{
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 18% 15%,#ffe9ad 0 4%,transparent 19%),
-    radial-gradient(circle at 83% 23%,#d9a4aa 0 3%,transparent 17%),
-    radial-gradient(circle at 52% 58%,#7faeaa 0 2%,transparent 24%),
-    linear-gradient(180deg,#182b48 0%,#29465a 32%,#3f6664 60%,#81907b 82%,#c6a47b 100%);
-  overflow-x:hidden;
-}
-.page{min-height:100vh;position:relative;padding:28px 18px 42px;text-align:center}
-.paper{
-  position:absolute;left:-5%;right:-5%;top:51%;height:38%;
-  background:#5c827e;
-  opacity:.62;
-  transform:rotate(-1deg);
-  z-index:0;
-  clip-path:polygon(0 7%,4% 5%,8% 8%,13% 4%,18% 7%,24% 3%,30% 7%,36% 4%,43% 7%,50% 3%,58% 6%,64% 4%,71% 7%,77% 3%,84% 6%,91% 4%,100% 7%,100% 93%,95% 91%,90% 94%,83% 91%,76% 95%,69% 92%,62% 95%,55% 91%,48% 94%,40% 91%,33% 95%,26% 92%,19% 94%,12% 91%,5% 94%,0 91%);
-}
-/* tiny enchanted-forest details */
-.ground-details{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.grass{position:absolute;width:3px;height:20px;border-radius:100% 0 100% 0;background:#526b50;transform-origin:bottom}
-.g1{left:29%;bottom:15%;transform:rotate(-22deg)}.g2{left:70%;bottom:14%;transform:rotate(25deg)}.g3{left:78%;bottom:17%;height:15px;transform:rotate(-12deg)}
-.leaf{position:absolute;width:17px;height:8px;border-radius:100% 0 100% 0;background:#71875e;opacity:.8}
-.l1{left:21%;bottom:14%;transform:rotate(25deg)}.l2{right:20%;bottom:12%;transform:rotate(-30deg)}
-.mushroom{position:absolute;width:17px;height:13px;border-radius:60% 60% 35% 35%;background:#bd7563;bottom:13%;z-index:2}
-.mushroom:after{content:"";position:absolute;width:5px;height:11px;left:6px;top:9px;background:#e8d8b9;border-radius:0 0 4px 4px}
-.mushroom i,.mushroom i:before,.mushroom i:after{position:absolute;width:3px;height:3px;border-radius:50%;background:#f2d99e;content:""}
-.mushroom i{left:4px;top:4px}.mushroom i:before{left:7px;top:2px}.mushroom i:after{left:3px;top:-2px}
-.m1{left:24%;transform:scale(.75)}.m2{right:23%;transform:scale(.55)}
-.firefly{position:absolute;width:4px;height:4px;border-radius:50%;background:#f6d77e;box-shadow:0 0 10px #ffe59a;animation:twinkle 3.2s ease-in-out infinite}
-.f1{left:24%;bottom:28%}.f2{right:26%;bottom:33%;animation-delay:1.1s}.f3{left:73%;bottom:25%;animation-delay:2s}
-
-/* The Nerini are free: no jar, just little spirits wandering through the night. */
-.wander-world{
-  position:relative;z-index:3;
-  width:min(100%,760px);margin:10px auto 0;
-  min-height:620px;overflow:visible;
-  isolation:isolate;
-}
-.nerino{
-  position:absolute;width:40px;height:44px;border:0;background:none;padding:0;
-  cursor:pointer;filter:drop-shadow(0 3px 5px #101e2744);
-  transition:left 6.5s cubic-bezier(.45,.05,.55,.95),top 6.5s cubic-bezier(.45,.05,.55,.95),filter .25s ease;
-  animation:spiritBob 4.8s ease-in-out infinite;
-  animation-delay:var(--delay,0s);
-  z-index:2;
-  -webkit-tap-highlight-color:transparent;
-}
-.nerino:hover,.nerino:focus-visible{
-  filter:drop-shadow(0 0 8px #ffe6a8aa) drop-shadow(0 3px 6px #101e2755);
-  outline:none;z-index:5;
-}
-.nerino:hover .star,.nerino:focus-visible .star{
-  filter:drop-shadow(0 0 8px #ffe6a8) drop-shadow(0 0 15px #ffe6a855);
-}
+:root{--night:#142b3a;--deep:#183b48;--teal:#28545b;--cream:#fff4dc;--gold:#edc77d;--ink:#172d38;--soft:#c9d8d2}
+html,body{margin:0;width:100%;height:100%;font-family:Georgia,"Times New Roman",serif;color:var(--cream);background:var(--night);overflow:hidden}
+body{background:radial-gradient(ellipse at 18% 18%,#6e7b78 0,transparent 31%),radial-gradient(ellipse at 82% 34%,#66505e 0,transparent 30%),radial-gradient(ellipse at 48% 100%,#34656a 0,transparent 48%),linear-gradient(155deg,#172b45 0%,#203d50 43%,#183b45 100%)}
+.page{height:100svh;min-height:0;position:relative;overflow:hidden;padding:clamp(10px,2.2vh,22px) 14px 8px;text-align:center;display:flex;flex-direction:column;align-items:center}
+/* Keep the page atmospheric but quiet: no competing landscape layers. */
+.paper,.ground-details,.fantasy-sky{display:none!important}
+h1{position:relative;z-index:2;margin:0 auto 5px;max-width:650px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(27px,5.2vw,46px);line-height:1.02;letter-spacing:-.7px;font-weight:normal;color:#fff0cf;text-shadow:0 2px 18px #071c2a88}
+.subtitle{position:relative;z-index:2;color:#e8c985;font-family:Georgia,"Times New Roman",serif;font-size:clamp(15px,3.7vw,22px);font-style:italic;margin:2px 0 10px}
+.controls{position:relative;z-index:5;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;width:100%;margin:0 auto 5px}
+.control{border:1px solid #e5c987;border-radius:24px;background:#f8e9c9;color:#243c46;padding:8px 13px;font:14px/1.15 Georgia,"Times New Roman",serif;box-shadow:0 3px 10px #071a2630;cursor:pointer}
+.control:active{transform:translateY(1px)}
+.jar-title{position:relative;z-index:2;color:#fff0cf;font:clamp(18px,4vw,25px)/1.1 Georgia,"Times New Roman",serif;margin:3px 0 2px}
+.counter{position:relative;z-index:2;color:#cbd9d4;font:12px/1.25 Georgia,"Times New Roman",serif;letter-spacing:1.5px;margin:2px 0 0}
+.wander-caption{position:relative;z-index:2;margin:3px 0 0;color:#d6e2dc;font:italic 12px/1.2 Georgia,"Times New Roman",serif}
+.wander-world{position:relative;z-index:3;width:min(100%,760px);flex:1 1 auto;min-height:0;height:0;margin:0 auto;overflow:hidden;isolation:isolate}
+.nerino{position:absolute;width:29px;height:32px;border:0;background:none;padding:0;cursor:pointer;filter:drop-shadow(0 2px 4px #06182070);transition:left 6.5s cubic-bezier(.45,.05,.55,.95),top 6.5s cubic-bezier(.45,.05,.55,.95),filter .25s ease;animation:spiritBob 4.8s ease-in-out infinite;animation-delay:var(--delay,0s);z-index:2;-webkit-tap-highlight-color:transparent}
+.nerino:hover,.nerino:focus-visible{filter:drop-shadow(0 0 8px #ffe6a8) drop-shadow(0 2px 4px #06182070);outline:none;z-index:5}
 .nerino svg{width:100%;height:100%;overflow:visible;pointer-events:none}
-@keyframes spiritBob{
-  0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}
-  50%{transform:translateY(-8px) rotate(calc(var(--rot,0deg) + 4deg))}
-}
-.fur{fill:#111;stroke:#090909;stroke-width:1}
-.eye{fill:#fff;stroke:#090909;stroke-width:1}.pupil{fill:#231d1a}
-.limb{fill:none;stroke:#111;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.star{stroke:#9b7b45;stroke-width:1;filter:drop-shadow(0 0 5px #ffe3a0)}
-.wander-caption{
-  position:relative;z-index:3;margin:2px 0 12px;
-  color:#f0d28b;font:16px Georgia,serif;text-shadow:0 1px 9px #102b3b99;
-}
-@media(max-width:420px){
-  .page{padding-left:12px;padding-right:12px}
-  .wander-world{min-height:640px}
-  .nerino{width:36px;height:40px}
-  .controls{align-items:center}
-}
-@media(prefers-reduced-motion:reduce){
-  .nerino{animation:none;transition:left 1ms,top 1ms}
-  .firefly,.spark,.soot-a,.soot-b,.soot-c{animation:none}
-}
-
-.add{
-  position:relative;z-index:5;
-  border:0;background:#d6a85f;color:#4b302b;
-  font:16px "Courier New",monospace;
-  padding:11px 20px;box-shadow:2px 3px 0 #a06b45;
-  clip-path:polygon(2% 8%,98% 0,100% 90%,3% 100%);
-  cursor:pointer;
-}
-.hint{position:relative;z-index:2;margin:13px 0 0;color:#746b64;font-size:13px}
-
-dialog{
-  width:min(460px,92vw);border:0;border-radius:8px;
-  background:#fffaf0;color:#3d342f;padding:0;
-  box-shadow:0 25px 80px #0005;
-}
-dialog::backdrop{background:#211b1766}
-.card{padding:26px}
-.card h2{font-family:Georgia,serif;font-weight:400;margin:0 0 16px;font-size:23px}
-textarea{
-  width:100%;min-height:170px;border:1px solid #d6c6ae;
-  border-radius:5px;background:#fffdf8;padding:13px;
-  font:17px/1.5 Georgia,serif;resize:vertical;outline:none;
-}
-.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
-.cancel{border:0;background:none;padding:10px;font:15px "Courier New",monospace}
-.save{border:0;background:#d1aa70;padding:10px 16px;font:15px "Courier New",monospace;cursor:pointer}
-.memory-text{font:20px/1.6 Georgia,serif;white-space:pre-wrap;text-align:center}
-.close{display:block;margin:18px auto 0}
+@keyframes spiritBob{0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}50%{transform:translateY(-5px) rotate(calc(var(--rot,0deg) + 4deg))}}
+.fur{fill:#111;stroke:#090909;stroke-width:1}.eye{fill:#fff;stroke:#090909;stroke-width:1}.pupil{fill:#231d1a}.limb{fill:none;stroke:#111;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.star{stroke:#9b7b45;stroke-width:1;filter:drop-shadow(0 0 5px #ffe3a0)}
+.hint{position:relative;z-index:2;flex:0 0 auto;margin:0 0 2px;color:#cbd9d4;font:11px/1.2 Georgia,"Times New Roman",serif}
+@media(max-width:420px){.page{padding-left:10px;padding-right:10px}h1{font-size:clamp(27px,7.5vw,34px);letter-spacing:0}.subtitle{margin-bottom:8px}.control{font-size:13px;padding:8px 10px}.controls{gap:6px}.jar-title{margin-top:2px}.wander-caption{font-size:11px}.nerino{width:27px;height:30px}}
+@media(prefers-reduced-motion:reduce){.nerino{animation:none;transition:left 1ms,top 1ms}}
+.add{position:relative;z-index:5;border:0;background:#d6a85f;color:#4b302b;font:16px Georgia,serif;padding:11px 20px;cursor:pointer}
+dialog{width:min(460px,92vw);max-height:85svh;overflow:auto;border:1px solid #e6d4ae;border-radius:16px;background:#fff7e7;color:#263b42;padding:0;box-shadow:0 25px 80px #0007}dialog::backdrop{background:#071a26aa}
+.card{padding:22px}.card h2{font-family:Georgia,"Times New Roman",serif;font-weight:normal;color:#294954;margin:0 0 14px;font-size:23px}
+textarea{width:100%;min-height:145px;border:1px solid #d4c3a3;border-radius:8px;background:#fffdf8;color:#243c46;padding:12px;font:16px/1.5 Georgia,serif;resize:vertical;outline:none}
+.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}.cancel{border:0;border-radius:20px;background:#e9e3d5;color:#30454b;padding:10px;font:14px Georgia,serif}.save{border:0;border-radius:20px;background:#e9c77e;color:#243b45;padding:10px 16px;font:14px Georgia,serif;cursor:pointer}.memory-text{font:18px/1.5 Georgia,serif;white-space:pre-wrap;text-align:center;color:#283f48}.close{display:block;margin:14px auto 0}
 </style>
 </head>
 
@@ -136,7 +56,7 @@ textarea{
   </div>
   <div class="paper"></div>
 
-  <h1>Le cose che non volevo<br>dimenticare</h1>
+  <h1>Ciò che non voglio<br>dimenticare</h1>
   <div class="subtitle">Piccole cose. Grandi ricordi.</div>
 
   <div class="controls">
@@ -214,14 +134,13 @@ function render(){
   const box=document.getElementById("memories");
   box.innerHTML="";
   const mobile = window.matchMedia("(max-width: 600px)").matches;
-  const worldWidth = Math.max(260, Math.min(box.clientWidth || window.innerWidth-32, 760));
-  // Give every Nerino breathing room vertically as the collection grows.
-  const rows = Math.max(2, Math.ceil(memories.length / (mobile ? 4 : 7)));
-  const worldHeight = Math.max(mobile ? 640 : 620, rows * (mobile ? 190 : 145));
+  const worldWidth = Math.max(260, Math.min(box.clientWidth || window.innerWidth-24, 760));
+  // The whole constellation shares the remaining viewport: no page scrolling.
+  const worldHeight = Math.max(250, Math.floor(window.innerHeight - box.getBoundingClientRect().top - 30));
   box.style.height = worldHeight + "px";
-  box.style.minHeight = worldHeight + "px";
-  const itemW = mobile ? 36 : 40, itemH = mobile ? 40 : 44;
-  const minDistance = mobile ? 52 : 56;
+  box.style.minHeight = "0";
+  const itemW = mobile ? 27 : 30, itemH = mobile ? 30 : 33;
+  const minDistance = mobile ? 31 : 35;
   let positions=[];
   let seed=0x5f3759df ^ (memories.length * 2654435761);
   for(const m of memories){
@@ -232,22 +151,18 @@ function render(){
   memories.forEach((m,i)=>{
     let p=null;
     for(let tries=0;tries<1800;tries++){
-      const x=8+rand()*Math.max(1,worldWidth-itemW-16);
-      const y=12+rand()*Math.max(1,worldHeight-itemH-24);
+      const x=3+rand()*Math.max(1,worldWidth-itemW-6);
+      const y=3+rand()*Math.max(1,worldHeight-itemH-6);
       if(positions.every(q=>Math.hypot((q.x+itemW/2)-(x+itemW/2),(q.y+itemH/2)-(y+itemH/2))>=minDistance)){
         p={x,y}; break;
       }
     }
     // If the page is crowded, extend the meadow and retry rather than stacking creatures.
     if(!p){
-      p={x:8+rand()*Math.max(1,worldWidth-itemW-16),y:worldHeight+60};
+      p={x:3+rand()*Math.max(1,worldWidth-itemW-6),y:3+rand()*Math.max(1,worldHeight-itemH-6)};
     }
     positions.push(p);
   });
-  // Keep the wandering field tall enough if an unusually large collection needed extra room.
-  const neededHeight=Math.max(worldHeight,...positions.map(p=>p.y+itemH+20));
-  box.style.height=neededHeight+"px";
-  box.style.minHeight=neededHeight+"px";
   const buttons=[];
   memories.forEach((m,i)=>{
     const b=document.createElement("button");
@@ -273,11 +188,11 @@ function render(){
     const currentY=parseFloat(b.style.top)||0;
     const w=b.offsetWidth||itemW, h=b.offsetHeight||itemH;
     const maxX=Math.max(8,box.clientWidth-w-8);
-    const maxY=Math.max(12,box.clientHeight-h-12);
+    const maxY=Math.max(3,box.clientHeight-h-3);
     let target=null;
     for(let tries=0;tries<90;tries++){
-      const nx=Math.max(8,Math.min(maxX,currentX+(rand()-.5)*Math.min(180,worldWidth*.42)));
-      const ny=Math.max(12,Math.min(maxY,currentY+(rand()-.5)*Math.min(200,box.clientHeight*.18)));
+      const nx=Math.max(3,Math.min(maxX,currentX+(rand()-.5)*Math.min(100,worldWidth*.32)));
+      const ny=Math.max(3,Math.min(maxY,currentY+(rand()-.5)*Math.min(90,box.clientHeight*.22)));
       const clear=buttons.every(other=>{
         if(other===b)return true;
         const ox=parseFloat(other.style.left)||0, oy=parseFloat(other.style.top)||0;
